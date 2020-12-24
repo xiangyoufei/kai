@@ -2,13 +2,13 @@
 spring:
   application:
     name: kai-api
-#  datasource:
-#    maxActive: 10
-#    ###############oracle################
-#    url: jdbc:oracle:thin:@172.32.231.135:1521/LARGESC
-#    driver-class-name: oracle.jdbc.driver.OracleDriver
-#    username: ls_maint
-#    password: bM2!dK4)cA0_
+  datasource:
+    maxActive: 10
+    ###############oracle################
+    url: jdbc:mysql://172.17.27.38:3306/coscodb
+    driver-class-name: com.mysql.jdbc.Driver
+    username: cosco
+    password: Cosadt*789
 
 # 应用服务 WEB 访问端口
 server:
