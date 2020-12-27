@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @Accessors(chain = true)
 public class BaseResponseBody<T> {
-    private int code;
+    private int code =200;
     private T data;
     private String message;
 }

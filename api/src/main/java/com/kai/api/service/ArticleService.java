@@ -1,5 +1,6 @@
 package com.kai.api.service;
 
+import com.kai.api.common.ArticleType;
 import com.kai.api.common.BaseResponseBody;
 import com.kai.api.common.Language;
 import com.kai.api.model.Article;
@@ -10,9 +11,9 @@ import java.util.Map;
 public interface ArticleService {
     BaseResponseBody<List<Article>> indexArticle();
 
-    BaseResponseBody<List<Article>> getArticleByType();
+    BaseResponseBody<List<Article>> getArticleByType(ArticleType articleType, Integer pageNo, Integer pageSize);
 
-    BaseResponseBody<String> articleDetail(String id);
+    BaseResponseBody<Article> articleDetail(String id);
 
     BaseResponseBody<Void> addArticle(Article article);
 

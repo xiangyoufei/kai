@@ -1,15 +1,13 @@
 package com.kai.api.common;
 
 import com.kai.api.model.User;
-
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.kai.api.util.ExpiryMap;
 
 public class Constant {
 
     /**
      * 用户登录token缓存
      */
-    private Map<String, User> tokenUserCache = new ConcurrentHashMap<>();
+    public static ExpiryMap<String, User> tokenUserCache = new ExpiryMap<>();
 
 }
