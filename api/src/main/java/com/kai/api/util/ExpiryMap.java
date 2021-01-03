@@ -35,7 +35,7 @@ public class ExpiryMap<K, V> {
 
     @Data
     @Accessors(chain = true)
-    class ExpiryEntry<V> {
+    static class ExpiryEntry<V> {
         private long expireTime;
 
         private V value;

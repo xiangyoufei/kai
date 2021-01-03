@@ -10,4 +10,6 @@ public class Constant {
      */
     public static ExpiryMap<String, User> tokenUserCache = new ExpiryMap<>();
 
+    public static final String BAIDU_SUCCESS_CODE="52000";
+
 }

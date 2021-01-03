@@ -5,15 +5,23 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
+import org.springframework.data.annotation.Persistent;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 @Data
 @Accessors(chain = true)
 @ApiModel("用户")
+@Table(name="user")
+@Persistent
+@Entity
 public class User {
 
     @ApiModelProperty("id")
+    @Id
     private String id;
 
     @ApiModelProperty("用户名")

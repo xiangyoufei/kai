@@ -6,7 +6,11 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
+import org.springframework.data.annotation.Persistent;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
@@ -14,9 +18,13 @@ import java.time.LocalDateTime;
 @Data
 @Accessors(chain = true)
 @ApiModel("文章")
+@Table(name = "article")
+@Entity
+@Persistent
 public class Article {
 
     @ApiModelProperty("文章id")
+    @Id
     private String id;
 
     @ApiModelProperty("标题")

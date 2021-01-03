@@ -32,6 +32,7 @@ public class ExceptionHandlerAdvice {
         @ExceptionHandler(value = {Exception.class})
         @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
         public BaseResponseBody handleAllException(Exception ex) {
+            ex.printStackTrace();
             BaseResponseBody responseBody = new BaseResponseBody();
             responseBody.setCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
             responseBody.setMessage(ex.getMessage() == null ? ex.toString() : ex.getMessage());
@@ -41,6 +42,7 @@ public class ExceptionHandlerAdvice {
         @ExceptionHandler(value = {ExistsException.class})
         @ResponseStatus(HttpStatus.BAD_REQUEST)
         public BaseResponseBody handleExistsException(ExistsException ex) {
+            ex.printStackTrace();
             BaseResponseBody responseBody = new BaseResponseBody();
             responseBody.setCode(HttpStatus.BAD_REQUEST.value());
             responseBody.setMessage(ex.getMessage());
@@ -50,6 +52,7 @@ public class ExceptionHandlerAdvice {
         @ExceptionHandler(value = {NotFoundException.class})
         @ResponseStatus(HttpStatus.NOT_FOUND)
         public BaseResponseBody handleNotFoundException(NotFoundException ex) {
+            ex.printStackTrace();
             BaseResponseBody responseBody = new BaseResponseBody();
             responseBody.setCode(HttpStatus.NOT_FOUND.value());
             responseBody.setMessage(ex.getMessage());
@@ -59,6 +62,7 @@ public class ExceptionHandlerAdvice {
         @ExceptionHandler(value = {AccessDeniedException.class})
         @ResponseStatus(HttpStatus.FORBIDDEN)
         public BaseResponseBody handleAccessDeniedException(AccessDeniedException ex) {
+            ex.printStackTrace();
             BaseResponseBody responseBody = new BaseResponseBody();
             responseBody.setCode(HttpStatus.FORBIDDEN.value());
             responseBody.setMessage(ex.getMessage());
@@ -70,6 +74,7 @@ public class ExceptionHandlerAdvice {
          */
         @ExceptionHandler({IllegalArgumentException.class})
         public BaseResponseBody badRequestException(IllegalArgumentException exception) {
+            exception.printStackTrace();
             BaseResponseBody<Object> responseBody = new BaseResponseBody<>();
             responseBody.setCode(HttpStatus.BAD_REQUEST.value());
             responseBody.setMessage(exception.getMessage());
@@ -81,6 +86,7 @@ public class ExceptionHandlerAdvice {
          */
         @ExceptionHandler
         public BaseResponseBody badRequestException(MethodArgumentNotValidException exception) {
+            exception.printStackTrace();
             BaseResponseBody<Object> responseBody = new BaseResponseBody<>();
             responseBody.setCode(HttpStatus.BAD_REQUEST.value());
             final FieldError fieldError = exception.getBindingResult().getFieldError();
@@ -98,6 +104,7 @@ public class ExceptionHandlerAdvice {
          */
         @ExceptionHandler
         public BaseResponseBody badRequestException(ValidationException exception) {
+            exception.printStackTrace();
             BaseResponseBody<Object> responseBody = new BaseResponseBody<>();
             responseBody.setCode(HttpStatus.BAD_REQUEST.value());
             responseBody.setMessage(exception.getMessage());

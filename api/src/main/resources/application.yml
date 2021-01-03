@@ -5,10 +5,21 @@ spring:
   datasource:
     maxActive: 10
     ###############oracle################
-    url: jdbc:mysql://172.17.27.38:3306/coscodb
+    url: jdbc:mysql://localhost:3306/kai
     driver-class-name: com.mysql.jdbc.Driver
-    username: cosco
-    password: Cosadt*789
+    username: root
+    password: "0203"
+  mvc:
+    static-path-pattern: /static/**
+  resources:
+    static-locations:
+      - classpath:/static/
+translate:
+  baidu:
+    app-id: "20201226000656556"
+    secret-key: WLSNxrsk5QiZLRzitfX_
+    url: http://api.fanyi.baidu.com/api/trans/vip/translate
+
 
 # 应用服务 WEB 访问端口
 server:

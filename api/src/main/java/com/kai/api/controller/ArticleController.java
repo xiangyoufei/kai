@@ -1,9 +1,6 @@
 package com.kai.api.controller;
 
-import com.kai.api.common.AdminRole;
-import com.kai.api.common.ArticleType;
-import com.kai.api.common.BaseResponseBody;
-import com.kai.api.common.Language;
+import com.kai.api.common.*;
 import com.kai.api.model.Article;
 import com.kai.api.service.ArticleService;
 import io.swagger.annotations.Api;
@@ -35,7 +32,7 @@ public class ArticleController {
 
     @GetMapping("listByType")
     @ApiOperation("根据文章类型查找文章")
-    public BaseResponseBody<List<Article>> getArticleByType(
+    public BaseResponseBody<Page<Article>> getArticleByType(
             @RequestParam @NotNull(message = "文章类型不能为空") @ApiParam("文章类型") ArticleType articleType,
             @RequestParam(required = false, defaultValue = "1") @ApiParam("页码") Integer pageNo,
             @RequestParam(required = false, defaultValue = "12") @ApiParam("页幅") Integer pageSize) {
@@ -56,12 +53,12 @@ public class ArticleController {
         return articleService.addArticle(article);
     }
 
-    @PostMapping("translate")
+    @GetMapping("translate")
     @ApiOperation("翻译")
     @AdminRole
     public BaseResponseBody<Map<Language, String>> translate(
-            @RequestParam @ApiParam("原文本语言类型") Language sourceLanguage,
-            @RequestBody @ApiParam("待翻译文本") @NotEmpty(message = "待翻译文本不能为空") String message) {
-        return articleService.translate(sourceLanguage,message);
+            @RequestParam(required = false,defaultValue = "zh") @ApiParam("原文本语言类型") Language from,
+            @RequestParam @ApiParam("待翻译文本") @NotEmpty(message = "待翻译文本不能为空") String message) {
+        return articleService.translate(from,message);
     }
 }

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Component
+//@Component
 @Aspect
 public class AuthInterception {
 
@@ -27,7 +27,7 @@ public class AuthInterception {
     @Before("pointcut()")
     public void checkAuth() {
         final String token = request.getHeader("kai-token");
-        User user = Constant.tokenUserCache.get(token);
+        User user =null;
         if (token == null || (user = Constant.tokenUserCache.get(token)) == null) {
             throw new AuthenticateException("请先登录");
         }
