@@ -42,7 +42,7 @@ public class Article {
     @ApiModelProperty("图片")
     @NotNull(message = "文章图片不能为空")
     @Lob
-    @Column(columnDefinition="TEXT")
+    @Column(columnDefinition="longtext")
     private String images;
 
     @ApiModelProperty("类型")

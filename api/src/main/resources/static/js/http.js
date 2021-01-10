@@ -5,6 +5,7 @@ Vue.prototype.$axios = axios    //全局注册，使用方法为:this.$axios
 Vue.prototype.qs = qs           //全局注册，使用方法为:this.qs
 
 function postRequest(resource,json) { //定义回调函数
+
     axios({
         method: 'POST',
         url: baseUrl+resource,
@@ -15,24 +16,32 @@ function postRequest(resource,json) { //定义回调函数
     }).then(res=>{
         // back(res) //回调函数
         console.log(123)
+        if(res){
+
+        }
         return res;
     }).catch(err=>{
         console.log(err)
     })
 }
-function getRequest(resource,json) { //定义回调函数
+function getRequest(resource) { //定义回调函数
     axios({
         method: 'GET',
-        url: baseUrl+'?'+resource,
+        url: baseUrl+resource,
         headers: {
             token: localStorage.getItem('token') || axios.token //放自己的token
-        },
-        data: json
+        }
     }).then(res=>{
-        // back(res) //回调函数
+        // let result = toJson(res);
+        if(result['code']==200){
+            return result['data']
+        }else{
+            alert(result['message'])
+        }
         console.log(123)
         return res;
     }).catch(err=>{
+        alert(err)
         console.log(err)
     })
 }
