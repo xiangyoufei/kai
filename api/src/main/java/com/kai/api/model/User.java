@@ -7,9 +7,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 import org.springframework.data.annotation.Persistent;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 @Data
@@ -33,6 +31,7 @@ public class User {
     private String password;
 
     @ApiModelProperty("用户类型")
+    @Enumerated(EnumType.STRING)
     private UserType userType;
 
 }

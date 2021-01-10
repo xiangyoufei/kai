@@ -12,7 +12,7 @@
 </head>
 
 <body>
-<div class="beautiy-template">
+<div class="art-template">
     <div id="common_header">
         <div class="container">
             <div class="header-top">
@@ -46,17 +46,16 @@
     <div class="page_content">
         <div class="container">
             <div class="page_title">
-                <img th:src="@{/images/title/2.png}" alt="">
+                <img th:src="@{/images/title/5.png}" alt="">
             </div>
         </div>
         <div class="container">
             <template v-for="article in articles">
-                <div class="item-wrapper">
-                    <img th:src="@{/images/PM3.jpg}" alt="">
-                    <h3>This is a title text here</h3>
+                <div class="item-wrapper"  :id="article.id">
+                    <img :src='article.image' alt="">
+                    <h3>{{article.title}}</h3>
                     <p>
-                        Font Awesome 6's first alpha release is out now!
-                        And we're brewing more icons, styles, services, and awesome too!
+                        {{article.summary}}
                     </p>
                 </div>
             </template>
@@ -84,7 +83,7 @@
         </div>
     </div>
 </div>
-<script th:src="@{/js/beautiy.js}"
+<script th:src="@{/js/art.js}"></script>
 </body>
 
 </html>

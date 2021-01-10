@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kai</title>
-    <link href="../static/styles/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../static/styles/index.css">
+    <link th:href="@{/styles/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/styles/index.css}">
+    <script th:src="@{/js/vue.min.js}"></script>
 </head>
 
 <body>

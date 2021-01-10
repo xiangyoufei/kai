@@ -2,28 +2,28 @@
 spring:
   application:
     name: kai-api
+  profiles:
+    active: dev
   datasource:
     maxActive: 10
-    ###############oracle################
-    url: jdbc:mysql://localhost:3306/kai
-    driver-class-name: com.mysql.jdbc.Driver
-    username: root
-    password: "0203"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
   mvc:
-    static-path-pattern: /static/**
+    static-path-pattern: /**
   resources:
-    static-locations:
-      - classpath:/static/
-translate:
-  baidu:
-    app-id: "20201226000656556"
-    secret-key: WLSNxrsk5QiZLRzitfX_
-    url: http://api.fanyi.baidu.com/api/trans/vip/translate
+    static-locations: classpath:/static/
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+
 
 
 # 应用服务 WEB 访问端口
 server:
   port: 8080
+
 # THYMELEAF (ThymeleafAutoConfiguration)
 spring.thymeleaf:
   # 开启模板缓存（默认值： true ）
@@ -41,8 +41,9 @@ spring.thymeleaf:
   # 要被排除在解析之外的视图名称列表，⽤逗号分隔
   excluded-view-names :
   # 要运⽤于模板之上的模板模式。另⻅ StandardTemplate-ModeHandlers( 默认值： HTML5)
-  mode : HTML5
+  mode : LEGACYHTML5
   # 在构建 URL 时添加到视图名称前的前缀（默认值： classpath:/templates/ ）
   prefix : classpath:/templates/
   # 在构建 URL 时添加到视图名称后的后缀（默认值： .html ）
   suffix : .html
+

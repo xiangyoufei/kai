@@ -61,4 +61,10 @@ public class ArticleController {
             @RequestParam @ApiParam("待翻译文本") @NotEmpty(message = "待翻译文本不能为空") String message) {
         return articleService.translate(from,message);
     }
+
+//    @GetMapping("types")
+//    @ApiOperation("获取文章类型")
+//    public BaseResponseBody<Map<String,String>> articleTypes(){
+//        return  articleService.articleTypes();
+//    }
 }

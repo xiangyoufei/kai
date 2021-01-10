@@ -14,9 +14,9 @@ public class ViewController {
     public ModelAndView issue() {
         return new ModelAndView("issue");
     }
-    @GetMapping("/atr")
+    @GetMapping("/art")
     public ModelAndView atr() {
-        return new ModelAndView("atr");
+        return new ModelAndView("art");
     }
     @GetMapping("/fashion")
     public ModelAndView fashion() {

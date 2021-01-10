@@ -8,9 +8,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 import org.springframework.data.annotation.Persistent;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
@@ -33,6 +31,8 @@ public class Article {
 
     @ApiModelProperty("正文")
     @NotEmpty(message = "文章正文不能为空")
+    @Lob
+    @Column(columnDefinition="TEXT")
     private String content;
 
     @ApiModelProperty("摘要")
@@ -41,18 +41,18 @@ public class Article {
 
     @ApiModelProperty("图片")
     @NotNull(message = "文章图片不能为空")
-    private byte[] images;
-
-    @ApiModelProperty("首页展示")
-    @NotNull(message = "是否首页展示不能为空")
-    private boolean showIndex;
+    @Lob
+    @Column(columnDefinition="TEXT")
+    private String images;
 
     @ApiModelProperty("类型")
     @NotNull(message = "文章类型不能为空")
+    @Enumerated(EnumType.STRING)
     private ArticleType articleType;
 
     @ApiModelProperty("语言")
     @NotNull(message = "文章语言类型不能为空")
+    @Enumerated(EnumType.STRING)
     private Language language;
 
     @ApiModelProperty("作者")
