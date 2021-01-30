@@ -46,8 +46,8 @@ public class ArticleController {
         return articleService.articleDetail(id);
     }
 
-    @PostMapping("add")
-    @ApiOperation("添加文章")
+    @PostMapping({"add","edit"})
+    @ApiOperation("添加、修改文章")
     @AdminRole
     public BaseResponseBody<Void> addArticle(@Validated @ApiParam("文章") @RequestBody Article article) {
         return articleService.addArticle(article);
@@ -56,10 +56,20 @@ public class ArticleController {
     @GetMapping("translate")
     @ApiOperation("翻译")
     @AdminRole
-    public BaseResponseBody<Map<Language, String>> translate(
+    public BaseResponseBody<String> translate(
             @RequestParam(required = false,defaultValue = "zh") @ApiParam("原文本语言类型") Language from,
+            @RequestParam(required = false,defaultValue = "en") @ApiParam("翻译结果文本语言类型") Language to,
             @RequestParam @ApiParam("待翻译文本") @NotEmpty(message = "待翻译文本不能为空") String message) {
-        return articleService.translate(from,message);
+        return articleService.translate(from,to,message);
+    }
+
+
+    @DeleteMapping("id")
+    @ApiOperation("翻译")
+    @AdminRole
+    public BaseResponseBody<Void> delete(
+            @NotNull(message = "文章id不能为空")@RequestParam() @ApiParam("文章id") String id) {
+        return articleService.deleteArticle(id);
     }
 
 //    @GetMapping("types")

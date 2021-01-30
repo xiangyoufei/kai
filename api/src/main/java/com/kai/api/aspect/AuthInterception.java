@@ -13,9 +13,11 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 
-//@Component
+@Component
 @Aspect
 public class AuthInterception {
+
+    public static ThreadLocal<String> loginUser =new ThreadLocal<>();
 
     @Autowired
     private HttpServletRequest request;
@@ -26,15 +28,17 @@ public class AuthInterception {
 
     @Before("pointcut()")
     public void checkAuth() {
-        final String token = request.getHeader("kai-token");
-        User user =null;
-        if (token == null || (user = Constant.tokenUserCache.get(token)) == null) {
-            throw new AuthenticateException("请先登录");
-        }
-
-        if (!(user.getUserType() == UserType.admin)) {
-            throw new AuthorizeException();
-        }
+//        final String token = request.getHeader("kai-token");
+//        User user =null;
+//        if (token == null || (user = Constant.tokenUserCache.get(token)) == null) {
+//            throw new AuthenticateException("请先登录");
+//        }
+//
+//        if (!(user.getUserType() == UserType.admin)) {
+//            throw new AuthorizeException();
+//        }
+        User user =new User().setUsername("admin");
+        loginUser.set(user.getUsername());
     }
 
 

@@ -1,10 +1,12 @@
 package com.kai.api.views;
 
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
+@Api(tags = {"视图"})
 public class ViewController {
     @GetMapping(value = {"/","/index"})
     public ModelAndView index() {

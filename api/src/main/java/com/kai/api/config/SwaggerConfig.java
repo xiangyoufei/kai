@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.oas.annotations.EnableOpenApi;
 import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.service.contexts.SecurityContext;
@@ -21,7 +22,7 @@ import static com.google.common.collect.Lists.newArrayList;
  * Swagger2配置类
  */
 @Configuration
-@EnableSwagger2
+@EnableOpenApi
 public class SwaggerConfig {
 
     ApiInfo apiInfo() {
@@ -43,29 +44,29 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
                 .paths(PathSelectors.any())
                 .build()
-                .useDefaultResponseMessages(false)//去掉swagger默认的状态码
-                .globalOperationParameters(pars)
-                .securitySchemes(securitySchemes())
-                .securityContexts(securityContexts());
+                .useDefaultResponseMessages(false);//去掉swagger默认的状态码
+//                .globalOperationParameters(pars)
+//                .securitySchemes(securitySchemes())
+//                .securityContexts(securityContexts());
     }
 
-    private List<SecurityScheme> securitySchemes() {
-        return newArrayList(
-                new ApiKey("Authorization", "X-SSO-FullticketId", "header"));
-    }
-    private List<SecurityContext> securityContexts() {
-        return newArrayList(
-                SecurityContext.builder()
-                        .securityReferences(defaultAuth())
-                        .build()
-        );
-    }
-    List<SecurityReference> defaultAuth() {
-        AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
-        AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
-        authorizationScopes[0] = authorizationScope;
-        return newArrayList(
-                new SecurityReference("Authorization", authorizationScopes));
-    }
+//    private List<SecurityScheme> securitySchemes() {
+//        return newArrayList(
+//                new ApiKey("Authorization", "X-SSO-FullticketId", "header"));
+//    }
+//    private List<SecurityContext> securityContexts() {
+//        return newArrayList(
+//                SecurityContext.builder()
+//                        .securityReferences(defaultAuth())
+//                        .build()
+//        );
+//    }
+//    List<SecurityReference> defaultAuth() {
+//        AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
+//        AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
+//        authorizationScopes[0] = authorizationScope;
+//        return newArrayList(
+//                new SecurityReference("Authorization", authorizationScopes));
+//    }
 
 }

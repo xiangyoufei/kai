@@ -7,7 +7,6 @@ import com.kai.api.common.Page;
 import com.kai.api.model.Article;
 
 import java.util.List;
-import java.util.Map;
 
 public interface ArticleService {
     BaseResponseBody<List<Article>> indexArticle();
@@ -18,5 +17,7 @@ public interface ArticleService {
 
     BaseResponseBody<Void> addArticle(Article article);
 
-    BaseResponseBody<Map<Language, String>> translate(Language from, String message);
+    BaseResponseBody<String> translate(Language from, Language to, String message);
+
+    BaseResponseBody<Void> deleteArticle(String id);
 }
